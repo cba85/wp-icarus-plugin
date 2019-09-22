@@ -1,0 +1,26 @@
+{
+    "name": "cba85/wp-icarus-plugin",
+    "description": "Wordpress Icarus plugin framework boilerplate",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Clement Barbaza",
+            "email": "hi@clementbarbaza.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "git@github.com:cba85/wp-icarus-framework.git"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "cba85/wp-icarus-framework": "dev-master"
+    }
+}
