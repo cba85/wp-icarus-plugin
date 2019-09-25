@@ -22,5 +22,10 @@
     "require": {
         "php": ">=7.1",
         "cba85/wp-icarus-framework": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Icarus\\Plugin\\": "src/"
+        }
     }
 }

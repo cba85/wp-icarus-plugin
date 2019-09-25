@@ -13,5 +13,17 @@
  * Domain Path: /resources/lang
  */
 
-// Session for flash notices in Wordpress administration
-@\session_start();
+use Icarus\Routing\Router;
+use Icarus\Support\Facades\Config;
+use Icarus\Support\Facades\View;
+
+require __DIR__ . '/vendor/autoload.php';
+
+Config::bind(['plugin' => require __DIR__ . '/config/plugin.php']);
+
+View::setPath(Config::get('plugin')['view']);
+
+$router = new Router;
+$router->load(Config::get('plugin')['routes'])
+    ->direct($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'])
+    ->createMenus();
