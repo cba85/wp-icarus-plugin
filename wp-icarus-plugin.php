@@ -13,9 +13,10 @@
  * Domain Path: /resources/lang
  */
 
-use Icarus\Routing\Router;
 use Icarus\Support\Facades\Config;
 use Icarus\Support\Facades\View;
+use Icarus\Support\Facades\Router;
+use Icarus\Support\Facades\Notice;
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -23,7 +24,8 @@ Config::bind(['plugin' => require __DIR__ . '/config/plugin.php']);
 
 View::setPath(Config::get('plugin')['view']);
 
-$router = new Router;
-$router->load(Config::get('plugin')['routes'])
+Notice::setKey('icarus-plugin');
+
+Router::load(Config::get('plugin')['routes'])
     ->direct($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'])
-    ->createMenus();
+    ->menu->create();

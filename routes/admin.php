@@ -1,9 +1,10 @@
 <?php
 
 $router->admin(function () use ($router) {
-    $router->menuPage(
-        'WP Icarus plugin',
-        'WP Icarus plugin',
+
+    $router->menu->page(
+        'WP Icarus page',
+        'WP Icarus page',
         'manage_options',
         'wp-icarus',
         function () {
@@ -12,9 +13,16 @@ $router->admin(function () use ($router) {
         'dashicons-admin-page',
         58);
 
-    $router->menuPage('WP Icarus plugin2', 'WP Icarus plugin2', 'manage_options', 'wp-icarus2', null, 'dashicons-admin-page', 59);
+    $router->menu->subPage(
+        'wp-icarus',
+        'WP Icarus subpage',
+        'WP Icarus subpage',
+        'manage_options',
+        'wp-icarus-2',
+        function () {
+            return (new \Icarus\Plugin\Controllers\Admin\AdminController)->index();
+        }
+    );
 
-    $router->get('/wp/wp-admin/wp-icarus', '\Icarus\Plugin\Controllers\Admin\AdminController@index');
-
-    $router->post('/wp/wp-admin/admin-post.php?action=process_test', '\Icarus\Plugin\Controllers\Admin\AdminController@save');
+    $router->action('/wp/wp-admin/admin-post.php', 'process_test', '\Icarus\Plugin\Controllers\Admin\AdminController@save');
 });
