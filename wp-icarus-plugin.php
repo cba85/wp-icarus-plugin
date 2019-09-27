@@ -9,23 +9,18 @@
  * Author URI:  https://clementbarbaza.com/
  * License:     GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: icarus
+ * Text Domain: wp-icarus
  * Domain Path: /resources/lang
  */
 
-use Icarus\Support\Facades\Config;
-use Icarus\Support\Facades\View;
-use Icarus\Support\Facades\Router;
-use Icarus\Support\Facades\Notice;
-
+ // Composer autoload
 require __DIR__ . '/vendor/autoload.php';
 
-Config::bind(['plugin' => require __DIR__ . '/config/plugin.php']);
+// Init plugin dependencies
+require __DIR__ . '/bootstrap/plugin.php';
 
-View::setPath(Config::get('plugin')['view']);
+// Register routes
+require __DIR__ . '/bootstrap/routes.php';
 
-Notice::setKey('icarus-plugin');
-
-Router::load(Config::get('plugin')['routes'])
-    ->direct($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD'])
-    ->menu->create();
+// Register scripts and styles
+require __DIR__ . '/bootstrap/assets.php';

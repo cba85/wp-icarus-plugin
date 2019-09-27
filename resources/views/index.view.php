@@ -1,10 +1,16 @@
-<h2>Plugin test</h2>
+<h2 class="wp-icarus-page-title">Plugin test</h2>
 
 <?php Icarus\Support\Facades\Notice::display(); ?>
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem voluptatum porro autem, id, impedit ullam deserunt officia explicabo eaque deleniti, ea reiciendis! Sunt possimus doloremque delectus culpa expedita eos explicabo!</p>
+<p>This page was generated using WP Icarus framework config, routing and view modules.</p>
+
+<p>The color of the page title was changed thanks to WP Icarus framework style module.</p>
+
+<p>Open your console to see javascript messages displayed using WP Icarus framework script module.</p>
 
 <h3>Form test</h3>
+
+<p>Submit the form to see the WP Icarus framework Notice module.</p>
 
 <form action="<?= esc_url(admin_url('admin-post.php')); ?>" method="post">
     <input type="hidden" name="action" value="process_test">
