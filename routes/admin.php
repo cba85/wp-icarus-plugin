@@ -1,7 +1,6 @@
 <?php
 
-$router->admin(function () use ($router) {
-
+if (is_admin()) {
     $router->menu->page(
         'WP Icarus page',
         'WP Icarus page',
@@ -11,7 +10,8 @@ $router->admin(function () use ($router) {
             return (new \Icarus\Plugin\Controllers\Admin\AdminController)->index();
         },
         'dashicons-admin-page',
-        58);
+        58
+    );
 
     $router->menu->subPage(
         'wp-icarus',
@@ -25,4 +25,4 @@ $router->admin(function () use ($router) {
     );
 
     $router->action('/wp/wp-admin/admin-post.php', 'process_test', '\Icarus\Plugin\Controllers\Admin\AdminController@save');
-});
+}
