@@ -13,14 +13,13 @@
  * Domain Path: /resources/lang
  */
 
- // Composer autoload
-require __DIR__ . '/vendor/autoload.php';
+use Icarus\Plugin\Controllers\Admin\AdminController;
+use Icarus\Plugin\Controllers\WordpressController;
 
-// Init plugin dependencies
-require __DIR__ . '/bootstrap/plugin.php';
+$plugin = require __DIR__ . '/bootstrap/plugin.php';
 
-// Register routes
-require __DIR__ . '/bootstrap/routes.php';
+if (is_admin()) {
+    (new AdminController)->run();
+}
 
-// Register scripts and styles
-require __DIR__ . '/bootstrap/assets.php';
+(new WordpressController)->run();

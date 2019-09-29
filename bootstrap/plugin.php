@@ -1,10 +1,7 @@
 <?php
 
-use Icarus\Support\Facades\Config;
-use Icarus\Support\Facades\View;
-use Icarus\Support\Facades\Notice;
+require_once __DIR__ . '/../vendor/autoload.php';
 
-// Init dependencies
-Config::bind(['plugin' => require __DIR__ . '/../config/plugin.php']);
-View::setPath(Config::get('plugin')['view']);
-Notice::setKey('icarus-plugin');
+$plugin = new Icarus\Plugin;
+$plugin->bootstrap();
+return $plugin;
