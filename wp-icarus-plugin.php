@@ -15,11 +15,20 @@
 
 use Icarus\Plugin\Controllers\Admin\AdminController;
 use Icarus\Plugin\Controllers\WordpressController;
+use Icarus\Plugin\Hooks\Activation;
+use Icarus\Plugin\Hooks\Deactivation;
+use Icarus\Support\Facades\Hook;
 
 $plugin = require __DIR__ . '/bootstrap/plugin.php';
 
+Hook::register('activation', __FILE__, function () {
+    new Activation;
+})->register('deactivation', __FILE__, function() {
+    new Deactivation;
+});
+
 if (is_admin()) {
-    (new AdminController)->run();
+    new AdminController;
 }
 
-(new WordpressController)->run();
+new WordpressController;

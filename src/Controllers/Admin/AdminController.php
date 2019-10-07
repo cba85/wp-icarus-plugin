@@ -14,6 +14,13 @@ class AdminController
 {
     protected $page = "admin.php?page=wp-icarus";
 
+    public function __construct()
+    {
+        $this->loadAssets();
+        $this->createMenu();
+        $this->registerActions();
+    }
+
     public function index()
     {
         return View::render('index');
@@ -55,12 +62,5 @@ class AdminController
         Script::setPath(Config::get('plugin')['scripts'])
             ->add('wp-icarus-admin', 'admin.js', [], false, 'all')
             ->save('admin_enqueue_scripts');
-    }
-
-    public function run()
-    {
-        $this->loadAssets();
-        $this->createMenu();
-        $this->registerActions();
     }
 }
