@@ -10,13 +10,6 @@ use Icarus\Config\Config;
 class Controller
 {
     /**
-     * Container instance
-     *
-     * @var \Icarus\Support\Container\Container
-     */
-    protected $container;
-
-    /**
      * Configuration instance
      *
      * @var \Icarus\Config\Config

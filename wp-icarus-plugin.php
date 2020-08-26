@@ -19,7 +19,9 @@ use Icarus\Plugin\Hooks\Activation;
 use Icarus\Plugin\Hooks\Deactivation;
 use Icarus\Support\Facades\Hook;
 
-require __DIR__ . '/bootstrap/plugin.php';
+require_once __DIR__ . '/vendor/autoload.php';
+
+new Icarus\Plugin;
 
 Hook::register('activation', __FILE__, function () {
     new Activation;
