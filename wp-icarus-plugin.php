@@ -19,16 +19,16 @@ use Icarus\Plugin\Hooks\Activation;
 use Icarus\Plugin\Hooks\Deactivation;
 use Icarus\Support\Facades\Hook;
 
-$plugin = require __DIR__ . '/bootstrap/plugin.php';
+require __DIR__ . '/bootstrap/plugin.php';
 
 Hook::register('activation', __FILE__, function () {
     new Activation;
-})->register('deactivation', __FILE__, function() {
+})->register('deactivation', __FILE__, function () {
     new Deactivation;
 });
 
 if (is_admin()) {
-    new AdminController;
+    return new AdminController;
 }
 
 new WordpressController;

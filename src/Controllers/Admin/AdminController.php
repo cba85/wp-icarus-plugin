@@ -2,20 +2,19 @@
 
 namespace Icarus\Plugin\Controllers\Admin;
 
-use Icarus\Support\Facades\View;
+use Icarus\Plugin\Controllers\Controller;
+
 use Icarus\Support\Facades\Notice;
 use Icarus\Support\Facades\Menu;
 use Icarus\Support\Facades\Admin;
-use Icarus\Support\Facades\Style;
-use Icarus\Support\Facades\Script;
-use Icarus\Support\Facades\Config;
 
-class AdminController
+class AdminController extends Controller
 {
     protected $page = "admin.php?page=wp-icarus";
 
     public function __construct()
     {
+        parent::__construct();
         $this->loadAssets();
         $this->createMenu();
         $this->registerActions();
@@ -23,7 +22,7 @@ class AdminController
 
     public function index()
     {
-        return View::render('index');
+        return $this->view->render('index');
     }
 
     public function save()
@@ -55,12 +54,10 @@ class AdminController
 
     protected function loadAssets()
     {
-        Style::setPath(Config::get('plugin')['styles'])
-            ->add('wp-icarus-admin', 'admin.css', [], false, 'all')
+        $this->style->add('wp-icarus-admin', 'admin.css', [], false, 'all')
             ->save('admin_enqueue_scripts');
 
-        Script::setPath(Config::get('plugin')['scripts'])
-            ->add('wp-icarus-admin', 'admin.js', [], false, 'all')
+        $this->script->add('wp-icarus-admin', 'admin.js', [], false, 'all')
             ->save('admin_enqueue_scripts');
     }
 }
