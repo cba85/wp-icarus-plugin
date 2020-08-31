@@ -6,6 +6,7 @@ use Icarus\Assets\Style;
 use Icarus\Assets\Script;
 use Icarus\View\View;
 use Icarus\Config\Config;
+use Icarus\Support\Facades\Session;
 
 class Controller
 {
@@ -44,6 +45,8 @@ class Controller
     {
         $this->config = new Config;
         $this->config->bind(['plugin' => require __DIR__ . "/../../config/plugin.php"]);
+
+        Session::setKey($this->config->get('plugin')['slug']);
 
         $this->view = new View;
         $this->view->setPath($this->config->get('plugin')['views']);
