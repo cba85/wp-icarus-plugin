@@ -20,8 +20,8 @@
         }
     ],
     "require": {
-        "php": ">=7.1",
-        "cba85/wp-icarus-framework": "dev-master"
+        "php": ">=7.4",
+        "cba85/wp-icarus-framework": "^1.0"
     },
     "autoload": {
         "psr-4": {
