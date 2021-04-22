@@ -1,8 +1,6 @@
 # WP Icarus plugin
 
-Wordpress Icarus plugin framework boilerplate.
-
-Worpress Icarus framework : https://github.com/cba85/wp-icarus-framework
+Wordpress Icarus plugin framework boilerplate for [Worpress Icarus framework](https://github.com/cba85/wp-icarus-framework).
 
 ## Install
 
